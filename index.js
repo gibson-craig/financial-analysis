@@ -106,8 +106,8 @@ var finances = [
   let netChangeSum = 0;
 // least min
 // greatest max
-// let least = []
-// let greatest = []
+let least = ['', 9999999999999]
+let greatest = ['', 0]
 
 for(let index = 0; index < finances.length; index++) {
     for(let index2 = 0; index2 < finances[index].length; index2++)
@@ -117,5 +117,38 @@ for(let index = 0; index < finances.length; index++) {
             change = finances[index][index2] - net;
             net = finances[index][index2];
             netArray.push(change);
+
+
+            if(change > greatest[1]) {
+                greatest = [finances[index][0], finances[index][1]]
+            }
+
+            if(change < least[1]){
+                least = [finances[index][0], finances[index][1]]
+            }
+
+
+            // console.log(`total: ${total}`);
+            // console.log(`change: ${change}`);
+            // console.log(`net: ${net}`);
+            // console.log(`netArray ${netArray}`);
     }
 }
+
+
+for (let index = 0; index < netArray.length; index++) {
+    netChangeSum += netArray[index];
+}
+
+average = Math.round((netChangeSum / 86) * 100) /100;
+
+
+analysis = 'Financial Analysis' + '\n' +
+'----------------------' + '\n' +
+'Total Months: ' + months + '\n' +
+'Total: $' + total + '\n' +
+'Average Change: ' + average + '\n' +
+'Greatest Increase in Profit: ' + greatest[0] + ': $' + greatest[1] + '\n' +
+'Greatest Decrease in Profit: ' + least[0] + ': $' + least[1] + '\n';
+
+console.log(analysis);
