@@ -147,10 +147,10 @@ analysis =
 `Financial Analysis
 ----------------------
 Total Months: ${months}
-Total: $ ${total}
-Average Change: ${average}
-Greatest Increase in Profit: ${greatest[0]} ${greatest[1]}
-Greatest Decrease in Profit: ${least[0]} ${least[1]}
+Total: $${total}
+Average Change: $${average}
+Greatest Increase in Profit: ${greatest[0]} ($${greatest[1]})
+Greatest Decrease in Profit: ${least[0]} ($${least[1]})
 `
 
 console.log(analysis)
