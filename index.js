@@ -6,7 +6,7 @@
 
 
 
-var finances = [
+let finances = [
     ['Jan-2010', 867884],
     ['Feb-2010', 984655],
     ['Mar-2010', 322013],
@@ -95,22 +95,19 @@ var finances = [
     ['Feb-2017', 671099],
   ];
 
-
+  let average;
+  let analysis;
   let months = finances.length;
   let total = 0;
   let change = 0;
-  let average;
-  let analysis;
   let net = 0;
   let netArray = [];
   let netChangeSum = 0;
-// least min
-// greatest max
-let least = ['', 9999999999999]
-let greatest = ['', 0]
+  let least = ['', 9999999999999]
+  let greatest = ['', 0]
 
 for(let index = 0; index < finances.length; index++) {
-    for(let index2 = 0; index2 < finances[index].length; index2++)
+    for(let index2 = 0; index2 < finances[index].length; index2++){
 
         if(typeof finances[index][index2] !== 'string') {
             total += finances[index][index2];
@@ -126,12 +123,7 @@ for(let index = 0; index < finances.length; index++) {
             if(change < least[1]){
                 least = [finances[index][0], finances[index][1]]
             }
-
-
-            // console.log(`total: ${total}`);
-            // console.log(`change: ${change}`);
-            // console.log(`net: ${net}`);
-            // console.log(`netArray ${netArray}`);
+        }    
     }
 }
 
@@ -140,15 +132,25 @@ for (let index = 0; index < netArray.length; index++) {
     netChangeSum += netArray[index];
 }
 
-average = Math.round((netChangeSum / 86) * 100) /100;
+average = Math.round((netChangeSum / finances.length) * 100) /100;
 
 
-analysis = 'Financial Analysis' + '\n' +
-'----------------------' + '\n' +
-'Total Months: ' + months + '\n' +
-'Total: $' + total + '\n' +
-'Average Change: ' + average + '\n' +
-'Greatest Increase in Profit: ' + greatest[0] + ': $' + greatest[1] + '\n' +
-'Greatest Decrease in Profit: ' + least[0] + ': $' + least[1] + '\n';
+// analysis = 'Financial Analysis' + '\n' +
+// '----------------------' + '\n' +
+// 'Total Months: ' + months + '\n' +
+// 'Total: $' + total + '\n' +
+// 'Average Change: ' + average + '\n' +
+// 'Greatest Increase in Profit: ' + greatest[0] + ': $' + greatest[1] + '\n' +
+// 'Greatest Decrease in Profit: ' + least[0] + ': $' + least[1] + '\n';
 
-console.log(analysis);
+analysis = 
+`Financial Analysis
+----------------------
+Total Months: ${months}
+Total: $ ${total}
+Average Change: ${average}
+Greatest Increase in Profit: ${greatest[0]} ${greatest[1]}
+Greatest Decrease in Profit: ${least[0]} ${least[1]}
+`
+
+console.log(analysis)
